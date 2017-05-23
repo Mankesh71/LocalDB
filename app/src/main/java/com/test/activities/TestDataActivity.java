@@ -64,18 +64,16 @@ public class TestDataActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v.getId() == ivClear.getId()) {
-            if (!"".equals(etForSearch.getText().toString().trim())) {
-                etForSearch.setText("");
-                if (mArrayListForData != null) {
-                    mArrayListForData.clear();
-                } else {
-                    mArrayListForData = new ArrayList<>();
-                }
+            etForSearch.setText("");
+            if (mArrayListForData != null) {
+                mArrayListForData.clear();
+            } else {
+                mArrayListForData = new ArrayList<>();
+            }
 
-                if (DBHelperSingleton.mDBDbHelper.getFullArrayList() != null && DBHelperSingleton.mDBDbHelper.getFullArrayList().size() > 0) {
-                    mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getFullArrayList());
-                    testDataAdapter.notifyDataSetChanged();
-                }
+            if (DBHelperSingleton.mDBDbHelper.getFullArrayList() != null && DBHelperSingleton.mDBDbHelper.getFullArrayList().size() > 0) {
+                mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getFullArrayList());
+                testDataAdapter.notifyDataSetChanged();
             }
         }
     }
@@ -87,13 +85,15 @@ public class TestDataActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mArrayListForData.clear();
         if (s.length() > 0) {
             if (DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()) != null && DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()).size() > 0) {
-                mArrayListForData.clear();
                 mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()));
-                testDataAdapter.notifyDataSetChanged();
             }
+        } else {
+            mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getFullArrayList());
         }
+        testDataAdapter.notifyDataSetChanged();
     }
 
     @Override
