@@ -33,6 +33,9 @@
             android:layout_toStartOf="@+id/ivClear"
             android:background="@drawable/edit_text_style_bg"
             android:drawablePadding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:inputType="textCapSentences"
             android:drawableStart="@drawable/ic_search"
             android:hint="Search"
             android:padding="5dp" />

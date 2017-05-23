@@ -74,9 +74,7 @@ public class TestDataActivity extends AppCompatActivity implements View.OnClickL
 
                 if (DBHelperSingleton.mDBDbHelper.getFullArrayList() != null && DBHelperSingleton.mDBDbHelper.getFullArrayList().size() > 0) {
                     mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getFullArrayList());
-
-                    testDataAdapter = new TestDataAdapter(this, mArrayListForData);
-                    rvForData.setAdapter(testDataAdapter);
+                    testDataAdapter.notifyDataSetChanged();
                 }
             }
         }
@@ -89,12 +87,11 @@ public class TestDataActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (s.length() > 1) {
+        if (s.length() > 0) {
             if (DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()) != null && DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()).size() > 0) {
+                mArrayListForData.clear();
                 mArrayListForData.addAll(DBHelperSingleton.mDBDbHelper.getSearchList(s.toString()));
-
-                testDataAdapter = new TestDataAdapter(this, mArrayListForData);
-                rvForData.setAdapter(testDataAdapter);
+                testDataAdapter.notifyDataSetChanged();
             }
         }
     }

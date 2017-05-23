@@ -19,6 +19,13 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <Button
+        android:id="@+id/btnGenerateDB"
+        android:text="Generate DB"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
