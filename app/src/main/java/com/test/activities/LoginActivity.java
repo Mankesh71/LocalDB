@@ -2,14 +2,11 @@ package com.test.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.test.R;
 import com.test.database.DBHelperSingleton;
@@ -19,12 +16,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A login screen that offers login via email/password.
+ * Created by Maik on 4/10/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.ivUserImage)
-    ImageView ivUserImage;
     @BindView(R.id.etFullName)
     EditText etFullName;
     @BindView(R.id.etMobileNumber)
@@ -99,19 +95,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
         return true;
-    }
-
-    //---Function to check network connection---//
-    public static boolean isNetworkAvailable(Context context) {
-        try {
-            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected())
-                return true;
-        } catch (Exception | Error e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 }
 

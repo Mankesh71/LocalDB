@@ -20,8 +20,9 @@ import butterknife.ButterKnife;
 
 
 /**
- * Created by Mankesh71 on 5/24/2017.
+ * Created by Maik on 4/10/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class TestDataAdapter extends RecyclerView.Adapter<TestDataAdapter.ViewHolder> {
     private List<TestModel> mListReportBean;
     private Context mContext;
@@ -31,7 +32,7 @@ public class TestDataAdapter extends RecyclerView.Adapter<TestDataAdapter.ViewHo
         this.mContext = con;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tvFullName)
         TextView tvFullName;
         @BindView(R.id.tvEmailId)
@@ -43,7 +44,7 @@ public class TestDataAdapter extends RecyclerView.Adapter<TestDataAdapter.ViewHo
         @BindView(R.id.view)
         View view;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

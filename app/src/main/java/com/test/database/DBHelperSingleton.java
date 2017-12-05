@@ -5,6 +5,7 @@ import android.content.Context;
 /**
  * Created by Maik on 4/10/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class DBHelperSingleton {
     private static DBHelperSingleton ourInstance = new DBHelperSingleton();
 

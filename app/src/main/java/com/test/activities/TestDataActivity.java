@@ -21,9 +21,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Mankesh71 on 5/24/2017.
+ * Created by Maik on 4/10/2016.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class TestDataActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
 
     @BindView(R.id.rvForData)

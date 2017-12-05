@@ -1,6 +1,5 @@
 package com.test.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,14 +23,16 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Mankesh71 on 5/24/2017.
+ * Created by Maik on 4/10/2016.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class TestDataFullActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.tvFullName)
@@ -41,8 +41,6 @@ public class TestDataFullActivity extends AppCompatActivity implements View.OnCl
     TextView tvEmailId;
     @BindView(R.id.tvMobileNumber)
     TextView tvMobileNumber;
-    @BindView(R.id.llMainItem)
-    LinearLayout llMainItem;
     @BindView(R.id.btnGenerateDB)
     Button btnGenerateDB;
 
@@ -75,12 +73,11 @@ public class TestDataFullActivity extends AppCompatActivity implements View.OnCl
         Context ctxt = this.getApplicationContext();
         File file, wfile;
         file = new File(ctxt.getDatabasePath("Test.db"), "");
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:SS");
+        SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:SS", Locale.getDefault());
         String strDate = mSimpleDateFormat.format(new Date());
         wfile = new File(ctxt.getExternalFilesDir(null), "Test_DB" + strDate + "_" + ".db3");
 
-        FileInputStream fin = null, fLog = null;
+        FileInputStream fin = null;
 
         try {
             // create FileInputStream object
@@ -108,9 +105,6 @@ public class TestDataFullActivity extends AppCompatActivity implements View.OnCl
             try {
                 if (fin != null) {
                     fin.close();
-                }
-                if (fLog != null) {
-                    fLog.close();
                 }
             } catch (IOException ioe) {
                 Log.e(TAG, "Error closing stream: " + ioe.getMessage());

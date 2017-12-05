@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 
 /**
- * @author Mankesh71 on 18/7/16.
+ * Created by Maik on 4/10/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class TestDatabaseManager {
     private SQLiteDatabase db;
     private final String TABLE_NAME_CATEGORY = "testTable";
@@ -23,14 +24,6 @@ public class TestDatabaseManager {
     private final String EMAIL_ID = "emailId";
     private final String PASSWORD = "password";
     private final String TAG = TestDatabaseManager.class.getSimpleName();
-
-    public SQLiteDatabase getDb() {
-        return db;
-    }
-
-    public void setDb(SQLiteDatabase db) {
-        this.db = db;
-    }
 
     public TestDatabaseManager(SQLiteDatabase db) {
         this.db = db;

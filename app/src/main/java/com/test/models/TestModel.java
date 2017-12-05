@@ -4,9 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Mankesh71 on 5/23/2017.
+ * Created by Maik on 4/10/2016.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class TestModel implements Parcelable {
 
     private String id = "", strFullName = "", strEmailId = "", strMobileNumber = "", strPassword = "";
@@ -75,7 +76,7 @@ public class TestModel implements Parcelable {
         dest.writeString(this.strPassword);
     }
 
-    protected TestModel(Parcel in) {
+    private TestModel(Parcel in) {
         this.id = in.readString();
         this.strFullName = in.readString();
         this.strEmailId = in.readString();

@@ -11,15 +11,16 @@ import com.test.models.TestModel;
 import java.util.ArrayList;
 
 /**
- * Created by Mankesh Mishra on 9/4/16.
+ * Created by Maik on 4/10/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "Test.db";
+    private static final String DATABASE_NAME = "Test.db";
     private final String testTable = "testTable";
     private TestDatabaseManager testDatabaseManager;
 
-    public DatabaseHandler(Context context) {
+    DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -31,18 +32,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void initObjects() {
+    void initObjects() {
         testDatabaseManager = new TestDatabaseManager(this.getWritableDatabase());
 
         alterTable(testTable);
     }
 
-    public void alterTable(String tableName) {
+    private void alterTable(String tableName) {
 
         Cursor res = this.getWritableDatabase().rawQuery("SELECT sql as msql FROM sqlite_master WHERE tbl_name='" + tableName + "' AND type='table'", null);
         res.moveToFirst();
         String strFindColumn = "";
-        while (res.isAfterLast() == false) {
+        while (!res.isAfterLast()) {
 
             strFindColumn = res.getString(0);
 
@@ -58,7 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /*When any update is need in tables*/
-    public void addColumnsInCategory(String tableName, String strFindColumn) {
+    private void addColumnsInCategory(String tableName, String strFindColumn) {
         /*if (!strFindColumn.equals("")){
             if (!strFindColumn.contains("isNeed")){
                 addColumnsInTable(tableName,"isNeed BOOLEAN");
